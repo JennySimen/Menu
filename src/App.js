@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
-function App() {
+function App() {  
+
+  const [food, setFood] = useState([]);
+
+  // run food function when page loads
+  useEffect(() => {
+    foods()
+  }, [])
+
+  const foods = async () => {
+    const response = await fetch('https://foodish-api.com/images/burger/burger9.jpg');
+    const imageBlob = await response.blob();
+    const imageObjectURL = URL.createObjectURL(imageBlob);
+
+  // store the data
+  setFood(imageObjectURL);
+
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div> 
+    <h1 className='heading'>Menu</h1>
+<div className='content'> <img className='pic' src={food} alt="burger" /> </div>
+ {/* <div className='btn'><button className='button'>new dish</button> </div> */}
+     </div>
   );
 }
 
+
+
 export default App;
+
