@@ -24,7 +24,6 @@ function App() {
   <div> 
     <h1 className='heading'>Menu</h1>
 <div className='content'> <img className='pic' src={food} alt="burger" /> </div>
- {/* <div className='btn'><button className='button'>new dish</button> </div> */}
      </div>
   );
 }
